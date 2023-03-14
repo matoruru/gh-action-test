@@ -2,10 +2,10 @@ name: CI
 
 on:
   workflow_dispatch: {}
-  push:
+  create:
     tags:
-    - "v*.*.*"
-    - "v*.*.*-rc*"
+    - v*.*.*
+    - v*.*.*-rc*
   pull_request:
     branches:
     - main
@@ -16,8 +16,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     environment: build
-    if: github.event.pull_request.merged == true
-
     steps:
       - name: Say hi
         run: |
