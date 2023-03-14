@@ -3,9 +3,11 @@ name: CI
 on:
   workflow_dispatch: {}
   create:
+    tags-ignore:
+    - '*'
     tags:
-    - v*.*.*
-    - v*.*.*-rc*
+    - 'v*.*.*'
+    - 'v*.*.*-rc*'
   pull_request:
     branches:
     - main
