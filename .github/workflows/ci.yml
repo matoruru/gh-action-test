@@ -2,17 +2,17 @@ name: CI
 
 on:
   workflow_dispatch: {}
-  push:
-    branches:
-    - main
   pull_request:
     branches:
     - main
+    types:
+    - closed
 
 jobs:
   build:
     runs-on: ubuntu-latest
     environment: build
+    if: github.event.pull_request.merged == true
 
     steps:
       - name: Say hi
