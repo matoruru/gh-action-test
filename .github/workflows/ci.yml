@@ -6,13 +6,14 @@ on:
 jobs:
   build:
     outputs:
-      a: ${{ steps.docker_build.outputs.a }}
+      a: ${{ steps.hi.outputs.a }}
     runs-on: ubuntu-latest
     environment: build
     steps:
       - name: Say hi
+        id: hi
         run: |
           echo "a=value_a" >> $GITHUB_OUTPUT
           echo hi
       - name: Check template with output - ${{ needs.build.outputs.a }}
-        run: echo ${{ needs.build.outputs.a }}
+        run: echo "${{ needs.build.outputs.a }}"
