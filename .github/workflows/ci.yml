@@ -14,6 +14,8 @@ on:
 
 jobs:
   job1:
+    outputs:
+       test: ${{ steps.step1.outputs.test }}
     runs-on: ubuntu-latest
     steps:
       - id: step1
@@ -22,3 +24,9 @@ jobs:
         run: echo "test=world" >> "$GITHUB_OUTPUT"
       - name: Step name ${{steps.step1.outputs.test}} ${{steps.step2.outputs.test}}
         run: echo "${{steps.step1.outputs.test}} ${{steps.step2.outputs.test}}"
+  job2:
+    needs: ["job1"]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Use outputs ${{ needs.job1.outputs.test }}
+        run: echo "hi"
