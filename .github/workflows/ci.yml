@@ -2,9 +2,7 @@ name: CI
 
 on:
   workflow_dispatch: {}
-  create:
-    branches-ignore:
-    - '**'
+  push:
     tags:
     - 'v[0-9]+.[0-9]+.[0-9]+'
     - 'v[0-9]+.[0-9]+.[0-9]+-rc[0-9]+'
