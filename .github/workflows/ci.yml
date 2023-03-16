@@ -22,7 +22,7 @@ jobs:
   job_15:
     needs: ["job1"]
     runs-on: ubuntu-latest
-    if: false
+    if: true
     steps:
       - name: always skip
         run: echo hi
