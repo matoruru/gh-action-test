@@ -29,7 +29,7 @@ jobs:
   job2:
     needs: ["job1", "job_15"]
     runs-on: ubuntu-latest
-    if: needs.job1.outputs.test != ''
+    if: ${{ !failure() }}
     steps:
       - name: Use outputs ${{ needs.job1.outputs.test }}
         run: echo "hi"
