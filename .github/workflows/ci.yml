@@ -18,8 +18,15 @@ jobs:
       - name: Step name ${{steps.step1.outputs.test}} ${{steps.step2.outputs.test}}
         run: echo "${{steps.step1.outputs.test}} ${{steps.step2.outputs.test}}"
 
+  job_15:
+    runs-on: ubuntu-latest
+    if: false
+    steps:
+      - name: always skip
+        run: echo hi
+
   job2:
-    needs: ["job1"]
+    needs: ["job1", "job_15"]
     runs-on: ubuntu-latest
     if: needs.job1.outputs.test != ''
     steps:
