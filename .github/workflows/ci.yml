@@ -17,12 +17,11 @@ jobs:
         run: echo "test=world" >> "$GITHUB_OUTPUT"
       - name: Step name ${{steps.step1.outputs.test}} ${{steps.step2.outputs.test}}
         run: echo "${{steps.step1.outputs.test}} ${{steps.step2.outputs.test}}"
-      - name: Always fail
-        run: exit 1
+
   job2:
     needs: ["job1"]
     runs-on: ubuntu-latest
-    if: always() && {{ needs.job1.outputs.test != '' }}
+    if: needs.job1.outputs.test != ''
     steps:
       - name: Use outputs ${{ needs.job1.outputs.test }}
         run: echo "hi"
