@@ -1,16 +1,9 @@
 name: CI
 
 on:
-  workflow_dispatch: {}
   push:
-    tags:
-    - 'v[0-9]+.[0-9]+.[0-9]+'
-    - 'v[0-9]+.[0-9]+.[0-9]+-rc[0-9]+'
-  pull_request:
     branches:
     - main
-    types:
-    - closed
 
 jobs:
   job1:
@@ -24,6 +17,8 @@ jobs:
         run: echo "test=world" >> "$GITHUB_OUTPUT"
       - name: Step name ${{steps.step1.outputs.test}} ${{steps.step2.outputs.test}}
         run: echo "${{steps.step1.outputs.test}} ${{steps.step2.outputs.test}}"
+      - name: Always fail
+        run: exit 1
   job2:
     needs: ["job1"]
     runs-on: ubuntu-latest
