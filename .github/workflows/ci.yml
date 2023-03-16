@@ -22,7 +22,7 @@ jobs:
   job2:
     needs: ["job1"]
     runs-on: ubuntu-latest
-    if: ${{ needs.job1.outputs.test != '' }}
+    if: always() #${{ needs.job1.outputs.test != '' }}
     steps:
       - name: Use outputs ${{ needs.job1.outputs.test }}
         run: echo "hi"
