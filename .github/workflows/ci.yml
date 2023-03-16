@@ -24,8 +24,8 @@ jobs:
     runs-on: ubuntu-latest
     if: true
     steps:
-      - name: always fail
-        run: exit 1
+      - name: always success
+        run: exit 0
 
   job2:
     needs: ["job1", "job_15"]
