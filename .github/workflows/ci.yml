@@ -19,6 +19,7 @@ jobs:
         run: echo "${{steps.step1.outputs.test}} ${{steps.step2.outputs.test}}"
 
   job_15:
+    needs: ["job1"]
     runs-on: ubuntu-latest
     if: false
     steps:
